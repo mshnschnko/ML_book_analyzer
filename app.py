@@ -9,8 +9,9 @@ qa_chain = None
 
 
 # Register the function to run during startup
-@app.on_event("startup")
+# @app.on_event("startup")
 def startup_event():
+    print("starting up")
     global qa_chain
     qa_chain = main_point_for_answers()
 
@@ -21,6 +22,7 @@ class QuestionResponse(BaseModel):
 
 @app.get("/predict")
 def predict_sentiment(question: str):
+    print(question)
     answer = message_answer(question, qa_chain)
 
     response = QuestionResponse(
@@ -30,5 +32,7 @@ def predict_sentiment(question: str):
 
     return response
 
-# if __name__ == '__main__':
-#     uvicorn.run(app, host="127.0.01", port=8000, reload=True)
+app.add_event_handler("startup", startup_event)
+
+if __name__ == '__main__':
+    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)
