@@ -29,7 +29,7 @@ class CFG:
     k = 3
 
     #Пути
-    Embeddings_path =  r'nlp_telegram_bot/vector_db/faiss_index_hp'
+    Embeddings_path =  r'ML_book_analyzer/vector_db/faiss_index_hp'
 
 
 
@@ -59,6 +59,7 @@ def dowland_model():
         r'D:\ML_book_analyzer\vector_db\faiss_index_hp',
         embeddings
     )
+    print("TYPE = ", type(vectordb))
     return vectordb
 
 
