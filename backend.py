@@ -42,7 +42,8 @@ def get_llm():
             "top_p": CFG.top_p,
             "repetition_penalty": CFG.repetition_penalty,
             "do_sample": CFG.do_sample,
-            "num_return_sequences": CFG.num_return_sequences
+            "num_return_sequences": CFG.num_return_sequences,
+            "device": "cuda"
         }
     )
     return llm
